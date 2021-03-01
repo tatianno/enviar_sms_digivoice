@@ -22,7 +22,8 @@ class Digivoice():
                         telefone,
                         mensagem
                     )
-                    resultado = manager.command(comando)
+                    resultado = self.manager.command(comando)
+                    print(resultado)
             
             self.manager.logoff()
             self.manager.close()
