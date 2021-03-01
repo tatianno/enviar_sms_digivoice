@@ -14,6 +14,8 @@ class Digivoice():
             print(info)
 
     def enviar_sms(self, lista):
+        self.debug('Lista: {}'.format(str(lista)))
+        
         if len(lista) != 0:
             self.debug('Conectando no AMI')
             self.manager.connect(ami_login['host'])
@@ -37,3 +39,5 @@ class Digivoice():
             self.debug('Desconectando no AMI')
             self.manager.logoff()
             self.manager.close()
+    
+        self.debug('Finalizado')
