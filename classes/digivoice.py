@@ -10,7 +10,7 @@ class Digivoice():
 
     def enviar_sms(self, lista):
         self.manager.connect(ami_login['host'])
-        manager.login(ami_login['user'], ami_login['secret'])
+        self.manager.login(ami_login['user'], ami_login['secret'])
 
         for linha in lista:
             if len(posicao_dados_csv) == len(linha):

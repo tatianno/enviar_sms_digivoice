@@ -15,8 +15,8 @@ for arquivo in arquivos_csv:
     with open(arquivo, 'rt') as ficheiro:
         lista_mensagens += csv.reader(ficheiro)
             
-print(lista_mensagens)
-#digivoice.enviar_sms(lista_mensagens)
+#print(lista_mensagens)
+digivoice.enviar_sms(lista_mensagens)
 
         
 
