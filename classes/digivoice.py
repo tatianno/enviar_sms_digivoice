@@ -38,6 +38,5 @@ class Digivoice():
             
             self.debug('Desconectando no AMI')
             self.manager.logoff()
-            self.manager.close()
     
         self.debug('Finalizado')
