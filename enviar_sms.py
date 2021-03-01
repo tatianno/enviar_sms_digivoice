@@ -1,4 +1,5 @@
 import csv
+import os
 from time import sleep
 from classes.digivoice import Digivoice
 from classes.dados_csv import DadosCsv
