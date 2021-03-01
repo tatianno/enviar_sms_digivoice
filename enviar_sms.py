@@ -21,6 +21,7 @@ while True:
         os.remove(arquivo)
                 
     digivoice.enviar_sms(lista_mensagens)
+    sleep(60)
 
         
 
