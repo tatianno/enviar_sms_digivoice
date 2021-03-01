@@ -22,3 +22,9 @@ List of available DigiVoice Cards
     2       60 Unknown      DG_DIGITAL_INTERFACE VB6060PCI    R2/ISDN       20            0    60    0    0
 
 ```
+
+## Cenário utilizado
+- Ubuntu Server 14.04.1
+- Asterisk 1.8.31.0
+- Channel Driver 1.1.8 
+- VoicerLib 4.2.5.6 (4256)
