@@ -9,19 +9,20 @@ class Digivoice():
         self.manager = Manager() 
 
     def enviar_sms(self, lista):
-        self.manager.connect(ami_login['host'])
-        self.manager.login(ami_login['user'], ami_login['secret'])
+        if len(lista) != 0:
+            self.manager.connect(ami_login['host'])
+            self.manager.login(ami_login['user'], ami_login['secret'])
 
-        for linha in lista:
-            if len(posicao_dados_csv) == len(linha):
-                telefone = linha[posicao_dados_csv['telefone']]
-                mensagem = linha[posicao_dados_csv['mensagem']]
-                comando = 'dgv send sms {} {} "{}"'.format(
-                    self.grupo_portas_gsm,
-                    telefone,
-                    mensagem
-                )
-                resultado = manager.command(comando)
-        
-        self.manager.logoff()
-        self.manager.close()
+            for linha in lista:
+                if len(posicao_dados_csv) == len(linha):
+                    telefone = linha[posicao_dados_csv['telefone']]
+                    mensagem = linha[posicao_dados_csv['mensagem']]
+                    comando = 'dgv send sms {} {} "{}"'.format(
+                        self.grupo_portas_gsm,
+                        telefone,
+                        mensagem
+                    )
+                    resultado = manager.command(comando)
+            
+            self.manager.logoff()
+            self.manager.close()
