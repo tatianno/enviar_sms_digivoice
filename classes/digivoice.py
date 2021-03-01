@@ -21,7 +21,7 @@ class Digivoice():
                         self.grupo_portas_gsm,
                         telefone,
                         mensagem
-                    ).encode('utf8')
+                    ).encode('utf-8')
                     resultado = self.manager.command(comando)
                     print(resultado.data)
             
