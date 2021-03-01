@@ -15,7 +15,7 @@ class Digivoice():
 
     def enviar_sms(self, lista):
         self.debug('Lista: {}'.format(str(lista)))
-        
+
         if len(lista) != 0:
             self.debug('Conectando no AMI')
             self.manager.connect(ami_login['host'])
@@ -23,8 +23,8 @@ class Digivoice():
 
             for linha in lista:
                 if len(posicao_dados_csv) == len(linha):
-                    telefone = linha[posicao_dados_csv['telefone']].encode('utf-8')
-                    mensagem = linha[posicao_dados_csv['mensagem']].encode('utf-8')
+                    telefone = linha[posicao_dados_csv['telefone']]
+                    mensagem = linha[posicao_dados_csv['mensagem']]
                     self.debug('Telefone: {}'.format(telefone))
                     self.debug('Mensagem: {}'.format(mensagem))
                     comando = 'dgv send sms {} {} "{}"'.format(
