@@ -15,13 +15,13 @@ class Digivoice():
 
             for linha in lista:
                 if len(posicao_dados_csv) == len(linha):
-                    telefone = linha[posicao_dados_csv['telefone']]
-                    mensagem = linha[posicao_dados_csv['mensagem']]
+                    telefone = linha[posicao_dados_csv['telefone']].encode('utf-8')
+                    mensagem = linha[posicao_dados_csv['mensagem']].encode('utf-8')
                     comando = 'dgv send sms {} {} "{}"'.format(
                         self.grupo_portas_gsm,
                         telefone,
                         mensagem
-                    ).encode('utf-8')
+                    )
                     resultado = self.manager.command(comando)
                     print(resultado.data)
             
