@@ -1,4 +1,6 @@
+#Modo Debug
 DEBUG = True
+log_file = '/var/log/envair_sms.log'
 
 #Diretorio monitorado com os arquivos csv com destino e mensagem do SMS
 pasta_mensagens = '/home/gnew/sms'
