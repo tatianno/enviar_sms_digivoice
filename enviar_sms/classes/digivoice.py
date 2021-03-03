@@ -43,3 +43,6 @@ class Digivoice():
             except:
                 self.debug('Falha na execução do script')
                 self.debug(lista)
+        
+        else:
+            self.debug('Não existem arquivos para envio SMS')
