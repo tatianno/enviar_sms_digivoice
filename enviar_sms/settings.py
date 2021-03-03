@@ -1,7 +1,7 @@
 DEBUG = True
 
 #Diretorio monitorado com os arquivos csv com destino e mensagem do SMS
-pasta_mensagens = 'arquivos'
+pasta_mensagens = '/home/gnew/sms'
 
 #Extensoes aceitas
 extensoes_validas = ['txt', 'csv']
