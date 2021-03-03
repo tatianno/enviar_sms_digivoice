@@ -6,7 +6,9 @@ pasta_mensagens = 'arquivos'
 #Formatacao do arquivo CSV
 posicao_dados_csv = {
     'telefone' : 0,
-    'mensagem' : 1
+    'id_movimento' : 1,
+    'status' : 2,
+    'mensagem' : 3
 }
 
 #Dados do AMI
