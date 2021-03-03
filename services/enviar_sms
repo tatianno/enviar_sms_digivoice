@@ -1,4 +1,4 @@
-! /bin/bash
+#!/bin/shell
 ### BEGIN INIT INFO
 # Provides: Python script
 # Required-Start: $local_fs $remote_fs $network $syslog
