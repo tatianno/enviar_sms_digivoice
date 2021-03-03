@@ -10,7 +10,7 @@
 #
 ### END INIT INFO
  
-DAEMON=/usr/local/enviar_sms_digivoice/enviar_sms/main.py
+DAEMON=/usr/local/enviar_sms_digivoice/enviar_sms/main.py &
 NAME=enviar_sms
 PIDFILE=/var/run/$NAME.pid
  
