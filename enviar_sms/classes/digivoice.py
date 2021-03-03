@@ -4,7 +4,7 @@ from settings import ami_login, posicao_dados_csv, DEBUG, log_file
 
 logging.basicConfig(
     level=logging.DEBUG, 
-    file=log_file,
+    filename=log_file,
     format='%(asctime)s :: %(levelname)s :: %(message)s'
 )
 
