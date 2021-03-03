@@ -3,7 +3,7 @@ import os
 from time import sleep
 from classes.digivoice import Digivoice
 from classes.dados_csv import DadosCsv
-from settings import grupo_portas_gsm
+from settings import grupo_portas_gsm, delimitador
 
 #Instanciando objetos
 digivoice = Digivoice(grupo_portas_gsm)
@@ -16,12 +16,13 @@ while True:
 
     for arquivo in arquivos_csv:
         with open(arquivo, 'rt') as ficheiro:
-            lista_mensagens += csv.reader(ficheiro)
+            lista_mensagens += csv.reader(ficheiro, delimiter=delimitador)
         
-        os.remove(arquivo)
+        #os.remove(arquivo)
                 
     digivoice.enviar_sms(lista_mensagens)
     sleep(60)
+    
 
         
 

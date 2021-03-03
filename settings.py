@@ -3,6 +3,12 @@ DEBUG = True
 #Diretorio monitorado com os arquivos csv com destino e mensagem do SMS
 pasta_mensagens = 'arquivos'
 
+#Extensoes aceitas
+extensoes_validas = ['txt', 'csv']
+
+#Delimitador do arquivo CSV
+delimitador = ';'
+
 #Formatacao do arquivo CSV
 posicao_dados_csv = {
     'telefone' : 0,
