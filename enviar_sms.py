@@ -18,7 +18,7 @@ while True:
         with open(arquivo, 'rt') as ficheiro:
             lista_mensagens += csv.reader(ficheiro, delimiter=delimitador)
         
-        #os.remove(arquivo)
+        os.remove(arquivo)
                 
     digivoice.enviar_sms(lista_mensagens)
     sleep(60)
