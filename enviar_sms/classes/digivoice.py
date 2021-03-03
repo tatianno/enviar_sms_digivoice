@@ -1,7 +1,5 @@
 from asterisk.manager import Manager
-from settings import ami_login
-from settings import posicao_dados_csv
-from settings import DEBUG
+from settings import ami_login, posicao_dados_csv, DEBUG
 
 class Digivoice():
 

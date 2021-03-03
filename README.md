@@ -1,14 +1,11 @@
 # Enviar SMS através da placa VB0404GSM da DIGIVOICE
 O script tem como objetivo monitorar um diretório para verificar se existem novas mensagens para enviar para o destinatário.
-No exemplos estamos monitorando o diretórios arquivos.
+Os arquivos para 
 
 ## Formato do arquivo CSV
 O arquivo CSV deve ter o seguinte formato:
 ```
-telefone destino código de área, mensagem
-telefone destino código de área, mensagem
-telefone destino código de área, mensagem
-telefone destino código de área, mensagem
+telefone destino código de área;id_movimentacao;status;mensagem
 ```
 
 ## Cards instalados no asterisk
@@ -28,3 +25,12 @@ List of available DigiVoice Cards
 - Asterisk 1.8.31.0
 - Channel Driver 1.1.8 
 - VoicerLib 4.2.5.6 (4256)
+
+## Instalação
+1- Execute o script install.sh para instalação de dependências.
+2- Inclua a tarefa no cron
+>> `*/1 * * * *root /usr/local/enviar_sms_digivoice/enviar_sms/main.py`
+
+## Uso
+O script por padrão monitora o diretório /home/gnew/sms a cada minuto (tarefa automatizada no crontab).
+O diretório pode ser montado via smbd.

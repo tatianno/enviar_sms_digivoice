@@ -15,7 +15,13 @@ if [ ! -d $DIR_SHARE ];then
     mkdir $DIR_SHARE
 fi
 
+if [ ! -d $DIR_SHARE/sms ];then
+    echo "Criando diretorio compartilhado" 
+    mkdir $DIR_SHARE/sms
+fi
+
 cp $DIR_INSTALL/confs/samba/smb.conf /etc/samba/smb.conf
+chown -R gnew:root $DIR_SHARE/sms/
 service smbd restart
 
 #Configuracoes asterisk
