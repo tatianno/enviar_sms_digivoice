@@ -16,7 +16,7 @@ class Digivoice():
 
     def debug(self, info):
         if DEBUG:
-            logging.DEBUG(info)
+            logging.debug(info)
 
     def enviar_sms(self, lista):
 
