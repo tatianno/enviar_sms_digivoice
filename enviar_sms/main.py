@@ -1,3 +1,4 @@
+#!/usr/local/enviar_sms_digivoice/enviar_sms/venv/bin/python
 import csv
 import os
 from time import sleep
