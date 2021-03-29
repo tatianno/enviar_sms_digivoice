@@ -1,4 +1,5 @@
 import logging
+from unicodedata import normalize
 from asterisk.manager import Manager
 from settings import ami_login, posicao_dados_csv, DEBUG, log_file
 
@@ -29,6 +30,7 @@ class Digivoice():
                     if len(posicao_dados_csv) == len(linha):
                         telefone = linha[posicao_dados_csv['telefone']]
                         mensagem = linha[posicao_dados_csv['mensagem']]
+                        mensagem = normalize('NFKD', mensagem).encode('ASCII', 'ignore').decode('ASCII')
                         comando = 'dgv send sms {} {} "{}"'.format(
                             self.grupo_portas_gsm,
                             telefone,
