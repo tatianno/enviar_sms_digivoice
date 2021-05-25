@@ -1,5 +1,5 @@
 #!/bin/bash
-DIR_PROD='/media/sms'
+DIR_PROD='/media/sms/StatusPedidosSMS/'
 DIR_OLD='/home/gnew/old'
 DIR_SMS='/home/gnew/sms'
 DIR_LOG='/home/gnew/sms.log'
