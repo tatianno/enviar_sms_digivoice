@@ -1,0 +1,2 @@
+#copiar essa linha no arquivo /etc/rc.local
+/usr/local/enviar_sms_digivoice/scripts/montar_unidade.sh

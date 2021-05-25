@@ -1,8 +1,8 @@
 #!/bin/bash
-DIR_PROD='/home/tatianno/Projetos/enviar_sms_digivoice/sms/prod'
-DIR_OLD='/home/tatianno/Projetos/enviar_sms_digivoice/sms/old'
-DIR_SMS='/home/tatianno/Projetos/enviar_sms_digivoice/sms'
-DIR_LOG='/home/tatianno/Projetos/enviar_sms_digivoice/sms.log'
+DIR_PROD='/media/sms'
+DIR_OLD='/home/gnew/old'
+DIR_SMS='/home/gnew/sms'
+DIR_LOG='/home/gnew/sms.log'
 QTDADE_SMS=$(/bin/ls -l $DIR_PROD/ | grep rw | wc -l)
 
 if [ $QTDADE_SMS -gt 0 ]

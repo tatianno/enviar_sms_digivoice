@@ -1,2 +1,3 @@
+#incluir essas linhas no cron -e
 */1 * * * *root /usr/local/enviar_sms_digivoice/scripts/monitorar_pasta.sh
 */1 * * * *root /usr/local/enviar_sms_digivoice/enviar_sms/main.py

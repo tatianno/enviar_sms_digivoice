@@ -20,6 +20,16 @@ if [ ! -d $DIR_SHARE/sms ];then
     mkdir $DIR_SHARE/sms
 fi
 
+if [ ! -d $DIR_SHARE/old ];then
+    echo "Criando diretorio para salvar sms enviados" 
+    mkdir $DIR_SHARE/old
+fi
+
+if [ ! -d /media/sms ];then
+    echo "Criando diretorio sms - ponto de montagem" 
+    mkdir /media/sms
+fi
+
 cp $DIR_INSTALL/confs/samba/smb.conf /etc/samba/smb.conf
 chown -R gnew:root $DIR_SHARE/sms/
 service smbd restart
