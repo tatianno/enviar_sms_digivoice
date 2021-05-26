@@ -1,4 +1,5 @@
 import logging
+from time import sleep
 from unicodedata import normalize
 from asterisk.manager import Manager
 from settings import ami_login, posicao_dados_csv, DEBUG, log_file
@@ -39,6 +40,7 @@ class Digivoice():
                         self.debug('Comando: {}'.format(comando))
                         resultado = self.manager.command(comando)
                         self.debug(resultado.data)
+                        sleep(10)
                 
                 self.manager.logoff()
             
