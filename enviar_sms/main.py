@@ -1,20 +1,45 @@
-#!/usr/local/enviar_sms_digivoice/enviar_sms/venv/bin/python                                                                                                                 
-import csv                                                                                                                                                                   
-import os                                                                                                                                                                    
-import codecs                                                                                                                                                                
+#!/usr/local/enviar_sms_digivoice/enviar_sms/venv/bin/python
+from time import sleep       
+from datetime import datetime                                                                                                                                                                                                                                                                        
 from classes.digivoice import Digivoice                                                                                                                                      
-from classes.dados_csv import DadosCsv                                                                                                                                       
-from settings import grupo_portas_gsm, delimitador                                                                                                                           
+from classes.db import MysqlConn
+from funcoes import copiar_dados
+from settings import grupo_portas_gsm, db                                                                                                                         
                                                                                                                                                                              
-#Instanciando objetos                                                                                                                                                        
+#Instanciando objetos 
 digivoice = Digivoice(grupo_portas_gsm)                                                                                                                                      
-dados_csv = DadosCsv()                                                                                                                                                       
-lista_mensagens = []                                                                                                                                                         
-#Obtendo lista de arquivos                                                                                                                                                   
-arquivos_csv = dados_csv.get_arquivos()                                                                                                                                      
-                                                                                                                                                                             
-for arquivo in arquivos_csv:                                                                                                                                                 
-    lista_mensagens += csv.reader(codecs.open(arquivo, 'rU', 'utf-16'), delimiter=delimitador)                                                                               
-    os.remove(arquivo)                                                                                                                                                       
-                                                                                                                                                                             
-digivoice.enviar_sms(lista_mensagens)
+
+while True:
+    copiar_dados()
+    mysql_conn = MysqlConn(db)
+    lista_mensagens = []                                                                                                                                     
+    fields = 'id, destino, mensagem, enviado'
+    query = "SELECT {} FROM mensagens WHERE enviado = 0".format(
+        fields 
+    )
+
+    for (
+        id,
+        destino, 
+        mensagem, 
+        enviado
+    ) in mysql_conn.query(query):                                                                                                                                                
+        lista_mensagens.append(
+            {
+                'id' : id,
+                'destino' : destino,
+                'mensagem' : mensagem
+            }
+        )
+                                                                                                                                                    
+    ids_enviados = digivoice.enviar_sms(lista_mensagens)
+
+    for id in ids_enviados:
+        query = "UPDATE mensagens SET enviado = 1, data_envio = {} WHERE id = {}".format(
+            id,
+            datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+        )
+        resultado = mysql_conn.query(query)
+
+    mysql_conn.disconnect()
+    sleep(300)
