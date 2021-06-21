@@ -29,23 +29,27 @@ def copiar_dados():
                     delimiter=delimitador
                 )
             )[0]
-            query = """INSERT INTO mensagens (
-                destino,
-                mensagem,
-                arquivo
-            ) VALUES (
-                '{}',
-                '{}',
-                '{}',
-                '{}'
-            )     
-            """.format(
-                dados[0],
-                dados[3],
-                arquivo
-            )
-            mysql_conn.query(query)
-            registros += 1
+            
+            if len(dados) >= 4:
+                query = """INSERT INTO mensagens (
+                    destino,
+                    mensagem,
+                    arquivo
+                ) VALUES (
+                    '{}',
+                    '{}',
+                    '{}'
+                )     
+                """.format(
+                    dados[0],
+                    dados[3],
+                    arquivo
+                )
+                mysql_conn.query(query)
+                registros += 1
+            
+            else:
+                erros += 1
             
         except:
             erros += 1
