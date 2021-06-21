@@ -7,7 +7,7 @@ from funcoes import copiar_dados
 from settings import grupo_portas_gsm, db, intervalo_verificacoes                                                                                                                       
                                                                                                                                                                              
 #Instanciando objetos 
-digivoice = Digivoice(grupo_portas_gsm)                                                                                                                                      
+digivoice = Digivoice(grupo_portas_gsm, intervalo=20)                                                                                                                                      
 
 while True:
     print(copiar_dados())
