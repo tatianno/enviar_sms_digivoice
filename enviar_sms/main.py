@@ -36,8 +36,8 @@ while True:
 
     for id in ids_enviados:
         query = "UPDATE mensagens SET enviado = 1, data_envio = {} WHERE id = {}".format(
-            id,
-            datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+            datetime.today().strftime('%Y-%m-%d %H:%M:%S'),
+            id
         )
         resultado = mysql_conn.query(query)
 

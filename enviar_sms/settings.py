@@ -20,7 +20,7 @@ ami_login = {
 }
 
 #Grupo com as portas GSM configurado no digivoice.conf
-grupo_portas_gsm = 'g3'
+grupo_portas_gsm = '1'
 
 #Dados para conexao com banco de dados
 db = {
