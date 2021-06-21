@@ -35,7 +35,7 @@ while True:
     ids_enviados = digivoice.enviar_sms(lista_mensagens)
 
     for id in ids_enviados:
-        query = "UPDATE mensagens SET enviado = 1, data_envio = {} WHERE id = {}".format(
+        query = "UPDATE mensagens SET enviado = 1, data_envio = '{}' WHERE id = {}".format(
             datetime.today().strftime('%Y-%m-%d %H:%M:%S'),
             id
         )
