@@ -4,13 +4,13 @@ from datetime import datetime
 from classes.digivoice import Digivoice                                                                                                                                      
 from classes.db import MysqlConn
 from funcoes import copiar_dados
-from settings import grupo_portas_gsm, db                                                                                                                         
+from settings import grupo_portas_gsm, db, intervalo_verificacoes                                                                                                                       
                                                                                                                                                                              
 #Instanciando objetos 
 digivoice = Digivoice(grupo_portas_gsm)                                                                                                                                      
 
 while True:
-    copiar_dados()
+    print(copiar_dados())
     mysql_conn = MysqlConn(db)
     lista_mensagens = []                                                                                                                                     
     fields = 'id, destino, mensagem, enviado'
@@ -42,4 +42,5 @@ while True:
         resultado = mysql_conn.query(query)
 
     mysql_conn.disconnect()
-    sleep(300)
+    print('Intervalo entre verificacoes:', intervalo_verificacoes)
+    sleep(intervalo_verificacoes)

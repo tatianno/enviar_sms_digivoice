@@ -12,14 +12,6 @@ extensoes_validas = ['txt', 'csv']
 #Delimitador do arquivo CSV
 delimitador = ';'
 
-#Formatacao do arquivo CSV
-posicao_dados_csv = {
-    'telefone' : 0,
-    'id_movimento' : 1,
-    'status' : 2,
-    'mensagem' : 3
-}
-
 #Dados do AMI
 ami_login = {
     'host' : '127.0.0.1',
@@ -37,3 +29,5 @@ db = {
     'passwd' : 'asJeuqo',
     'database' : 'envio_sms',
 }
+
+intervalo_verificacoes = 300

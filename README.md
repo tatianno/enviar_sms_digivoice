@@ -28,9 +28,8 @@ List of available DigiVoice Cards
 
 ## Instalação
 1- Execute o script install.sh para instalação de dependências.
-2- Inclua a tarefa no cron
->> `*/1 * * * *root /usr/local/enviar_sms_digivoice/enviar_sms/main.py`
+
 
 ## Uso
-O script por padrão monitora o diretório /home/gnew/sms a cada minuto (tarefa automatizada no crontab).
+O script por padrão monitora o diretório /home/gnew/sms a cada 5 minutos.
 O diretório pode ser montado via smbd.
