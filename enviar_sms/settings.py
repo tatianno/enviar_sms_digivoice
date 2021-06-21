@@ -33,7 +33,7 @@ grupo_portas_gsm = 'g1'
 #Dados para conexao com banco de dados
 db = {
     'host' : 'localhost',
-    'user' : 'gnew',
-    'passwd' : 'asJeuqodk9837',
+    'user' : 'sms',
+    'passwd' : 'asJeuqo',
     'database' : 'envio_sms',
 }

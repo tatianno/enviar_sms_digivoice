@@ -48,6 +48,14 @@ pip install -r requirements.txt
 cp services/enviar_sms /etc/init.d/
 update-rc.d enviar_sms defaults
 
+#CRIANDO BANCO DE DADOS
+echo "Configurando MYSQL"
+mysql -u root -e "create database envio_sms"
+mysql -u root -e "CREATE USER 'sms'@'localhost' IDENTIFIED BY 'asJeuqo'"
+mysql -u root -e "GRANT ALL PRIVILEGES ON envio_sms.* TO sms@localhost"
+mysql -u root -e "flush privileges"
+mysql -u root envio_sms < sql/envio_sms.sql
+
 #Limpando arquivos desnecessarios
 cd $DIR_ATUAL
 rm -r enviar_sms_digivoice
