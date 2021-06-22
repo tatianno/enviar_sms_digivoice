@@ -32,15 +32,8 @@ while True:
             }
         )
                                                                                                                                                     
-    ids_enviados = digivoice.enviar_sms(lista_mensagens)
-
-    for id in ids_enviados:
-        query = "UPDATE mensagens SET enviado = 1, data_envio = '{}' WHERE id = {}".format(
-            datetime.today().strftime('%Y-%m-%d %H:%M:%S'),
-            id
-        )
-        resultado = mysql_conn.query(query)
-
+    ids_enviados = digivoice.enviar_sms(lista_mensagens, mysql_conn)      
     mysql_conn.disconnect()
+    print(ids_enviados)
     print('Intervalo entre verificacoes:', intervalo_verificacoes)
     sleep(intervalo_verificacoes)

@@ -1,4 +1,5 @@
 import logging
+from datetime import datetime
 from time import sleep
 from unicodedata import normalize
 from asterisk.manager import Manager
@@ -22,7 +23,7 @@ class Digivoice():
         if DEBUG:
             logging.debug(info)
 
-    def enviar_sms(self, lista):
+    def enviar_sms(self, lista, mysql_conn):
         ids = []
 
         if len(lista) != 0:
@@ -46,14 +47,19 @@ class Digivoice():
 
                 try:
                     resultado = self.manager.command(comando)
+                    ids.append(linha['id'])
                     self.debug(resultado.data)
+                    query = "UPDATE mensagens SET enviado = 1, data_envio = '{}' WHERE id = {}".format(
+                        datetime.today().strftime('%Y-%m-%d %H:%M:%S'),
+                        linha['id']
+                    )
+                    resultado = mysql_conn.query(query)
                 
                 except:
                     self.debug('Falha dgv send sms')
                 
                 if self.manager_connect:
                     sleep(self.intervalo)
-                    ids.append(linha['id'])
 
             try:    
                 self.manager.logoff()
