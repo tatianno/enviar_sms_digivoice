@@ -30,42 +30,33 @@ class Digivoice():
             try:
                 self.manager.connect(ami_login['host'])
                 self.manager.login(ami_login['user'], ami_login['secret'])
-                self.manager_connect = True
-            
-            except:
-                self.debug('Falha na conexão com o Asterisk')
+                print('Manager conectado:', self.manager.connected())
 
-            for linha in lista:
-                telefone = linha['destino']
-                mensagem = linha['mensagem']
-                comando = 'dgv send sms {} {} "{}"'.format(
-                    self.grupo_portas_gsm,
-                    telefone,
-                    mensagem
-                )
-                self.debug('Comando: {}'.format(comando))
-
-                try:
-                    resultado = self.manager.command(comando)
-                    ids.append(linha['id'])
-                    self.debug(resultado.data)
-                    query = "UPDATE mensagens SET enviado = 1, data_envio = '{}' WHERE id = {}".format(
-                        datetime.today().strftime('%Y-%m-%d %H:%M:%S'),
-                        linha['id']
-                    )
-                    resultado = mysql_conn.query(query)
-                
-                except:
-                    self.debug('Falha dgv send sms')
-                
-                if self.manager_connect:
-                    sleep(self.intervalo)
-
-            try:    
+                if self.manager.connected():
+                    for linha in lista:
+                        telefone = linha['destino']
+                        mensagem = linha['mensagem']
+                        comando = 'dgv send sms {} {} "{}"'.format(
+                            self.grupo_portas_gsm,
+                            telefone,
+                            mensagem
+                        )
+                        self.debug('Comando: {}'.format(comando))
+                        resultado = self.manager.command(comando)
+                        ids.append(linha['id'])
+                        self.debug(resultado.data)
+                        query = "UPDATE mensagens SET enviado = 1, data_envio = '{}' WHERE id = {}".format(
+                            datetime.today().strftime('%Y-%m-%d %H:%M:%S'),
+                            linha['id']
+                        )
+                        resultado = mysql_conn.query(query)
+                        mysql_conn.commit()
+                        sleep(self.intervalo)
+    
                 self.manager.logoff()
             
             except:
-                self.debug('Falha em desconectar do Asterisk')
+                self.debug('Falha no processo')
         
         else:
             self.debug('Não existem arquivos para envio SMS')

@@ -26,6 +26,9 @@ class MysqlConn():
     )
     self.cursor = self.db_connection.cursor()  
 
+  def commit(self):
+    self.db_connection.commit()
+
   def disconnect(self):
     self.cursor.close()
     self.db_connection.commit()
